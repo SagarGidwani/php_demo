@@ -15,7 +15,7 @@ pipeline{
                         sh "scp -r -o strictHostKeyChecking=no devserverconfig ${DEV_SERVER}:/home/ec2-user"
                         sh "ssh -o strictHostKeyChecking=no ${DEV_SERVER} 'bash ~/devserverconfig/docker-script.sh'"
                         sh "ssh ${DEV_SERVER} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh "ssh ${DEV_SERVER} docker build -t ${IMAGE_NAME} /home/ec2-user/devserverconfig"
+                        sh "ssh ${DEV_SERVER} sudo docker build -t ${IMAGE_NAME} /home/ec2-user/devserverconfig"
                         sh "ssh ${DEV_SERVER} sudo docker push ${IMAGE_NAME}"
 
                     }
