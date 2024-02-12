@@ -3,7 +3,7 @@ pipeline{
     environment{
         DEV_SERVER = 'ec2-user@172.31.42.7'
         DEPLOY_SERVER = 'ec2-user@172.31.37.16'
-        IMAGE_NAME = "sagargidwani/java-mvn-privaterepos:php${BUILD_NUMBER}"
+        IMAGE_NAME = 'sagargidwani/java-mvn-privaterepos:php${BUILD_NUMBER}'
     }
 
     stages{
