@@ -1,0 +1,20 @@
+version: "3"
+services:
+  web:
+    image: sagargidwani/java-mvn-privaterepos:php2
+    ports:
+      - "8008-8008:80"
+    deploy:
+      replicas: 2
+    depends_on:
+      - mysql
+  mysql:
+    image: sagargidwani/java-mvn-privaterepos:mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+
+volumes:
+  db_data: {}
