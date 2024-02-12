@@ -3,7 +3,7 @@ services:
   web:
     image: "${DOCKER_IMAGE}"
     ports:
-      - "8008-8008:80"
+      - "9001-9002:80"
     deploy:
       replicas: 2
     depends_on:
