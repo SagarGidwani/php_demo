@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: sagargidwani/java-mvn-privaterepos:php2
+    image: "${DOCKER_IMAGE}"
     ports:
       - "8008-8008:80"
     deploy:
