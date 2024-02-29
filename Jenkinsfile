@@ -52,6 +52,7 @@ pipeline{
             agent any
             steps{
                 script{
+                    sleep(time: 90, unit: "SECONDS")
                     echo "copy ansible files on ACM and run the playbook"
                     sshagent(['aws-key']) {
                     sh "scp -o StrictHostKeyChecking=no ansible/* ${ACM_IP}:/home/ec2-user"
