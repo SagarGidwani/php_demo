@@ -52,10 +52,10 @@ pipeline{
             agent any
             steps{
                 script{
-                    sleep(time: 90, unit: "SECONDS")
+                    //sleep(time: 90, unit: "SECONDS")
                     echo "copy ansible files on ACM and run the playbook"
                     sshagent(['aws-key']) {
-                    sh "scp -o StrictHostKeyChecking=no ansible/* ${ACM_IP}:/home/ec2-user"
+                    sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/ansible-tf-compose/ansible/* ${ACM_IP}:/home/ec2-user"
                         //copy the ansible target key on ACM as private key file
                         withCredentials([sshUserPrivateKey(credentialsId: 'Ansible-key',keyFileVariable: 'keyfile',usernameVariable: 'user')]){ 
                           sh "scp  $keyfile ${ACM_IP}:/home/ec2-user/.ssh/id_rsa"    
