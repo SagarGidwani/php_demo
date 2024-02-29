@@ -30,4 +30,24 @@
   #   copy: src=/home/ec2-user/docker-compose.yml dest=/home/ec2-user
   - name: Run the docker-compose
     docker_compose:
-      project_src: /home/ec2-user
+      project_name: PHP_DB
+      definition:
+          version: "3"
+          services:
+              web:
+                image: "{{ DOCKER_IMAGE }}"
+                ports:
+                - "8001-8002:80"
+                deploy:
+                    replicas: 2
+                depends_on:
+                - mysql
+              mysql:
+                image: sagargidwani/java-mvn-privaterepos:mysql
+                volumes:
+                - db_data:/var/lib/mysql
+                environment:
+                  MYSQL_ROOT_PASSWORD: password
+                  MYSQL_DATABASE: mydatabase
+          volumes:
+            db_data: {}
